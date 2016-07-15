@@ -1,0 +1,12 @@
+Introduction: Statistical work in neuroimaging has increased steadily over the years. As such, a large number of packages for neuroimaging analysis have been developed such as fmri, oro.nifti, AnalyzeFMRI, FIACH, ANTsR, and fslr.  As the data are 3-dimensional, visualizing this data can be challenging.  Plotting neuroimaging data in R has primarily been done using multiple views of slices of the brain, multiple views of the same area of the brain in different directions (x,y,z), or 3-dimensional rendering using packages such as rgl.  
+
+One of the main issue with these methods is that using standard image rastering can be slow, which makes data interaction and exploration difficult.  Fully capable neuroimaging visualization software exists such as ITK-SNAP MIPAV, FSL, and Mango.  These do not interface easily with R, require third-party requirements.  
+
+Methods: The Mango software does have a pure JavaScript implementation, however, called Papaya (http://ric.uthscsa.edu/mango/papaya.html).  Papaya can load multiple images and render an interactive display for data exploration.  The goal of the papayar package (https://github.com/muschellij2/papayar) was to create a widget for R that allows users to pass images from R and create the necessary HTML to view the images using the Papaya library.  
+
+Users can pass images into papayar functions, which then starts a HTML server, which renders the images either in a browser or viewer, as that built into the RStudio IDE.  This allows users to integrate interactive displays of neuroimage data into the capabilities present in R, such as embedding them into a report made with Rmarkdown and knitr, or a webpage with interactive controls using Shiny.  
+
+Conclusion: The papayar package allows R users to interact with neuroimaging for data quality checking, data exploration, and ultimately displaying results.  This functionality is crucial for this data as the true structure is 3-dimensional and should be displayed as such.
+
+
+

@@ -1,0 +1,40 @@
+---
+title: "Papayar"
+author: "John Muschelli"
+date: "July 15, 2016"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Why interactivity
+
+- Cool, but NOT always necessary
+- Journals still don't accept it
+- 
+
+## Problem
+
+- Images Rendering is slow
+- Manipulate package!
+- Problem is Image
+- too much backend
+- Use JS that already exists
+ 
+
+## What is an image
+
+- 3-dimensional array
+
+## Lessons Learned
+
+- Use other people's stuff
+- Porting to R can help a communithy
+    - not always so straightforward
+    - Functionality at the whim of the maintainer
+    - not std R
+- htmlwidgets is great
+    - not always super easy for a user to cram into
+    
