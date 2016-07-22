@@ -30,7 +30,8 @@ ortho2(img)
 
 ```{r div, results='asis'}
 library(papayar)
-papaya_div()
+x = papaya_div()
+cat(x)
 ```
 
 ## Let's make it interactive!
