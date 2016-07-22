@@ -28,10 +28,8 @@ ortho2(img)
 
 ## Solution: What we want
 
-```{r papaya}
-library(papayar)
-embed_papaya("reduced_mni.nii.gz", outdir = ".")
-```
+<div class="papaya" data-params="params"></div>
+
 
 ## Let's make it interactive!
 
