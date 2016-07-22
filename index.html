@@ -83,6 +83,7 @@
       <script type="text/javascript"> 
         var params = []; 
         params["images"] = ["reduced_mni.nii.gz"]; 
+        params["images"] = ["threshold.nii.gz"]; 
         </script>
 
 </head>
@@ -101,11 +102,15 @@
           </hgroup>
   </slide>
 
-<slide class=''><hgroup><h2>Problem: Images are 3D: Brain</h2></hgroup><article  id="problem-images-are-3d-brain">
+<slide class=''><hgroup><h2>Problem: Images are 3D: Brain Example</h2></hgroup><article  id="problem-images-are-3d-brain-example">
 
 <p><img src="index_files/figure-html/plot-1.png" width="720" /></p>
 
-</article></slide><slide class=''><hgroup><h2>Solution: What we want</h2></hgroup><article  id="solution-what-we-want">
+</article></slide><slide class=''><hgroup><h2>We want to explore results</h2></hgroup><article  id="we-want-to-explore-results">
+
+<p><img src="index_files/figure-html/thresh-1.png" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2>Solution: Interactive exploring</h2></hgroup><article  id="solution-interactive-exploring">
 
 <div class="papaya" data-params="params">
 </div>
@@ -126,21 +131,15 @@
 
 </article></slide><slide class=''><hgroup><h2>First Attempt: Use manipulate</h2></hgroup><article  id="first-attempt-use-manipulate">
 
-<p>The <code>manipulate</code> package <span class="cite">(Allaire 2014)</span> from RStudio can add</p>
+<p>The <code>manipulate</code> package <span class="cite">(Allaire 2014)</span> from RStudio can add interactivity, BUT:</p>
 
 <ul>
-<li>Images Rendering is slow</li>
-<li>Manipulate package!</li>
-<li>Problem is Image</li>
-<li>too much backend</li>
-<li>Use JS that already exists</li>
+<li>Images rendering was slow (due to my plotting function)</li>
+<li>Only works with RStudio</li>
+<li>Can&#39;t be embedded</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>What is an image</h2></hgroup><article  id="what-is-an-image">
-
-<ul>
-<li>3-dimensional array</li>
-</ul>
+</article></slide><slide class=''><hgroup><h2>Next Attempt: Port (i.e. Steal) another program</h2></hgroup><article  id="next-attempt-port-i.e.-steal-another-program">
 
 </article></slide><slide class=''><hgroup><h2>Lessons Learned</h2></hgroup><article  id="lessons-learned">
 

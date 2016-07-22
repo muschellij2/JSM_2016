@@ -16,17 +16,25 @@ knitr::opts_chunk$set(echo = FALSE,
                       message = FALSE)
 ```
 
-## Problem: Images are 3D: Brain
+## Problem: Images are 3D:  Brain Example
 
 ```{r plot}
 library(fslr)
 img = mni_img(brain = TRUE)
 img = dropEmptyImageDimensions(img)
 writenii(img, "reduced_mni.nii.gz")
+thresh = img > 7500
+writenii(thresh, "threshold.nii.gz")
 ortho2(img)
 ```
 
-## Solution: What we want
+## We want to explore results
+
+```{r thresh}
+ortho2(img, thresh)
+```
+
+## Solution: Interactive exploring
 
 ```{r div, results='asis'}
 library(papayar)
@@ -46,18 +54,17 @@ Many times it's to display results.
 
 ## First Attempt: Use manipulate
 
-The `manipulate` package [@manipulate] from RStudio can add 
+The `manipulate` package [@manipulate] from RStudio can add interactivity, BUT:
 
-- Images Rendering is slow
-- Manipulate package!
-- Problem is Image
-- too much backend
-- Use JS that already exists
- 
+- Images rendering was slow (due to my plotting function)
+- Only works with RStudio
+- Can't be embedded 
 
-## What is an image
 
-- 3-dimensional array
+## Next Attempt: Port (i.e. Steal) another program
+
+
+
 
 ## Lessons Learned
 
