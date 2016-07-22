@@ -2,20 +2,50 @@
 title: "Papayar"
 author: "John Muschelli"
 date: "July 15, 2016"
-output: ioslides_presentation
+bibliography: JSM_2016.bib
+output:
+  ioslides_presentation:
+    self_contained: false
+    includes:
+      in_header: header.html
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE, 
+                      warning = FALSE, 
+                      message = FALSE)
 ```
 
-## Why interactivity
+## Problem: Images are 3D: Brain
 
-- Cool, but NOT always necessary
-- Journals still don't accept it
-- 
+```{r plot}
+library(fslr)
+img = mni_img(brain = TRUE)
+img = dropEmptyImageDimensions(img)
+ortho2(img)
+writenii(img, "reduced_mni.nii.gz")
+```
 
-## Problem
+## Solution: What we want
+
+```{r papaya}
+library(papayar)
+embed_papaya("reduced_mni.nii.gz", outdir = ".")
+```
+
+## Let's make it interactive!
+
+1. What is the value added?
+2. Is it necessary? 
+3. How could I first incorporate it in a static way (e.g. journals)
+    - When that fails go interactive
+    
+Many times it's to display results.
+
+
+## First Attempt: Use manipulate
+
+The `manipulate` package [@manipulate] from RStudio can add 
 
 - Images Rendering is slow
 - Manipulate package!
@@ -38,3 +68,6 @@ knitr::opts_chunk$set(echo = FALSE)
 - htmlwidgets is great
     - not always super easy for a user to cram into
     
+
+
+## Bibliography
