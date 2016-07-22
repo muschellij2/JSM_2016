@@ -28,8 +28,10 @@ ortho2(img)
 
 ## Solution: What we want
 
-<div class="papaya" data-params="params"></div>
-
+```{r div, results='asis'}
+library(papayar)
+papaya_div()
+```
 
 ## Let's make it interactive!
 
