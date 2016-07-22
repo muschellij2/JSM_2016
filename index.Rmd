@@ -23,15 +23,18 @@ library(fslr)
 img = mni_img(brain = TRUE)
 img = dropEmptyImageDimensions(img)
 writenii(img, "reduced_mni.nii.gz")
-thresh = img > 7500
+threshval = 7500
+thresh = img > threshval
 writenii(thresh, "threshold.nii.gz")
-ortho2(img)
+i2 = fslswapdim(img, a = "-x")
+t2 = i2 > threshval
+ortho2(i2, add.orient = FALSE)
 ```
 
 ## We want to explore results
 
 ```{r thresh}
-ortho2(img, thresh)
+ortho2(i2, t2, add.orient = FALSE)
 ```
 
 ## Solution: Interactive exploring
