@@ -22,8 +22,8 @@ knitr::opts_chunk$set(echo = FALSE,
 library(fslr)
 img = mni_img(brain = TRUE)
 img = dropEmptyImageDimensions(img)
-ortho2(img)
 writenii(img, "reduced_mni.nii.gz")
+ortho2(img)
 ```
 
 ## Solution: What we want
