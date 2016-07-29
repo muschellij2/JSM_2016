@@ -16,7 +16,7 @@ knitr::opts_chunk$set(echo = FALSE,
                       message = FALSE)
 ```
 
-## Problem: Images are 3D:  Brain Example
+## Problem: Images are 3D: Brain
 
 ```{r plot}
 library(fslr)
@@ -55,6 +55,17 @@ cat(x)
 Many times it's to display results.
 
 
+## But other programs can do this!
+
+- Show Pictures of Mango, FSLView, ITK-snap, etc. 
+
+## Principle of interactivity
+
+- Should be scriptable to get the interactive graphic
+- Should be within the analysis workflow
+    - Others are just standalone viewers
+
+
 ## First Attempt: Use manipulate
 
 The `manipulate` package [@manipulate] from RStudio can add interactivity, BUT:
@@ -71,8 +82,8 @@ The `manipulate` package [@manipulate] from RStudio can add interactivity, BUT:
 
 ## Lessons Learned
 
-- Use other people's stuff
-- Porting to R can help a communithy
+- Borrow (heavily) other people's stuff
+- Porting to R can help the communithy
     - not always so straightforward
     - Functionality at the whim of the maintainer
     - not std R
