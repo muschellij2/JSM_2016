@@ -53,7 +53,7 @@ if (!file.exists(seg_fname)) {
 } else {
   seg = readnii(seg_fname)
 }
-seg_img = seg == 1
+seg_img = seg == 2
 i2 = fslswapdim(img, a = "-x")
 t2 = fslswapdim(seg_img, a = "-x")
 ortho2(i2, add.orient = FALSE)
