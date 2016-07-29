@@ -106,48 +106,52 @@ The `manipulate` package [@manipulate] from RStudio can add interactivity, BUT:
 The `animation` package [@animation1, @animation2] can easily make GIFs with the images:
 
 Pros:    
+
 - Just plotting with regular functions
     - Can be embedded into an html easily
 
 Cons: 
+
 - Not really "interactive"
     - less choice on user's end
     - not easy to move back/forward or different view
 
-```{r gif}
+```{r gif, results='hide'}
 library(msseg)
-nz = nsli(i2)
-# n_slices = nz
-n_slices = 10
-probs = seq(1/(n_slices * 2), 
-            1 - 1/(n_slices * 2), 
-            length.out = n_slices)
-slices = round(quantile(seq(nz), probs = probs))
-slices = unique(slices)
-
-t3 = t2
-t3[t2 == 0] = NA
-t3 = cal_img(t3)
-tstub = tempfile()
-tfile = paste0(tstub, "_%04d.png")
-png(tfile, 
-    res = 300, 
-    height = 7, 
-    width = 7,
-    units = "in",
-    type = "cairo")
-for (slice in slices) {
-  oro.nifti::overlay(x = i2, y = t3, 
-          z = slice,
-          col.y = "green",
-          plot.type = "single")
-}
-dev.off()
 outname = "images/slice_movie.gif"
-png_converter(
-  paste0(tstub, "*.png"),
-  extra.opts = "-delay 20 -density 300",
-  outname)
+# if (!file.exists(outname)) {
+    nz = nsli(i2)
+    # n_slices = nz
+    n_slices = 10
+    probs = seq(1/(n_slices * 2), 
+                1 - 1/(n_slices * 2), 
+                length.out = n_slices)
+    slices = round(quantile(seq(nz), probs = probs))
+    slices = unique(slices)
+    
+    t3 = t2
+    t3[t2 == 0] = NA
+    t3 = cal_img(t3)
+    tstub = tempfile()
+    tfile = paste0(tstub, "_%04d.png")
+    png(tfile, 
+        res = 300, 
+        height = 7, 
+        width = 7,
+        units = "in",
+        type = "cairo")
+    for (slice in slices) {
+      oro.nifti::overlay(x = i2, y = t3, 
+              z = slice,
+              col.y = "green",
+              plot.type = "single")
+    }
+    dev.off()
+    png_converter(
+      paste0(tstub, "*.png"),
+      extra.opts = "-delay 80 -density 300",
+      outname)
+# }
 ```
 
 ## Solution: Port papaya: JavaScript library
