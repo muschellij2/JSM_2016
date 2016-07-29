@@ -20,14 +20,42 @@ knitr::opts_chunk$set(echo = FALSE,
 
 ```{r plot}
 library(fslr)
-img = mni_img(brain = TRUE)
-img = dropEmptyImageDimensions(img)
-writenii(img, "reduced_mni.nii.gz")
-threshval = 7500
-thresh = img > threshval
-writenii(thresh, "threshold.nii.gz")
+library(extrantsr)
+library(WhiteStripe)
+x = download_img_data()
+rm(list = 'x')
+img_fname = "reduced_t1.nii.gz"
+mask_fname = "reduced_t1_mask.nii.gz"
+if (!all(file.exists(c(img_fname,
+                       mask_fname)))) {
+  t1_fname = system.file("T1Strip.nii.gz", 
+                         package = "WhiteStripe")
+  img = readnii(t1_fname)
+  mask = img > 0
+  dd = dropEmptyImageDimensions(mask, 
+                                other.imgs = img)
+  img = dd$other.imgs
+  writenii(img, img_fname)
+  mask = dd$outimg
+  writenii(mask, mask_fname)
+} else {
+  img = readnii(img_fname)
+  mask = readnii(mask_fname)
+}
+```
+
+```{r wm_seg}
+seg_fname = "t1_seg.nii.gz"
+if (!file.exists(seg_fname)) {
+  res = otropos(a = img, x = mask)
+  seg = res$segmentation 
+  writenii(seg, seg_fname)
+} else {
+  seg = readnii(seg_fname)
+}
+seg_img = seg == 1
 i2 = fslswapdim(img, a = "-x")
-t2 = i2 > threshval
+t2 = fslswapdim(seg_img, a = "-x")
 ortho2(i2, add.orient = FALSE)
 ```
 
@@ -37,27 +65,27 @@ ortho2(i2, add.orient = FALSE)
 ortho2(i2, t2, add.orient = FALSE)
 ```
 
-## Solution: Interactive exploring
-
-```{r div, results='asis'}
-library(papayar)
-x = papaya_div()
-cat(x)
-```
-
 ## Let's make it interactive!
 
-1. What is the value added?
-2. Is it necessary? 
-3. How could I first incorporate it in a static way (e.g. journals)
-    - When that fails go interactive
-    
-Many times it's to display results.
+1. Are static graphics (e.g. PDFs) "good enough"?
+
+<img src="images/philosoraptor.jpeg" style="width: 50%; display: block; margin: auto;">
+
+<p style="font-size: 10pt">image from [http://cheezburger.com](http://cheezburger.com)</p>
+
+## Let's make it interactive! {.build}
+
+1. Are static graphics (e.g. PDFs) "good enough"?
+
+> 2. What step in the analysis does it come in? For me:
+      - exploratory - looking at where image outcomes occur
+      - confirmatory - see how model predicts image outcome
+> 3. 
 
 
 ## But other programs can do this!
 
-- Show Pictures of Mango, FSLView, ITK-snap, etc. 
+<img src="images/stacked.gif" style="width: 100%; display: block; margin: auto;">
 
 ## Principle of interactivity
 
@@ -65,25 +93,85 @@ Many times it's to display results.
 - Should be within the analysis workflow
     - Others are just standalone viewers
 
-
 ## First Attempt: Use manipulate
 
 The `manipulate` package [@manipulate] from RStudio can add interactivity, BUT:
 
-- Images rendering was slow (due to my plotting function)
+- Images rendering was slow (due to the R plotting function)
 - Only works with RStudio
-- Can't be embedded 
+- Can't be embedded in document
+
+## Secon Attempt: Set of PDFs or one GIFs!
+
+The `animation` package [@animation1, @animation2] can easily make GIFs with the images:
+
+Pros:    
+- Just plotting with regular functions
+    - Can be embedded into an html easily
+
+Cons: 
+- Not really "interactive"
+    - less choice on user's end
+    - not easy to move back/forward or different view
+
+```{r gif}
+library(msseg)
+nz = nsli(i2)
+# n_slices = nz
+n_slices = 10
+probs = seq(1/(n_slices * 2), 
+            1 - 1/(n_slices * 2), 
+            length.out = n_slices)
+slices = round(quantile(seq(nz), probs = probs))
+slices = unique(slices)
+
+t3 = t2
+t3[t2 == 0] = NA
+t3 = cal_img(t3)
+tstub = tempfile()
+tfile = paste0(tstub, "_%04d.png")
+png(tfile, 
+    res = 300, 
+    height = 7, 
+    width = 7,
+    units = "in",
+    type = "cairo")
+for (slice in slices) {
+  oro.nifti::overlay(x = i2, y = t3, 
+          z = slice,
+          col.y = "green",
+          plot.type = "single")
+}
+dev.off()
+outname = "images/slice_movie.gif"
+png_converter(
+  paste0(tstub, "*.png"),
+  extra.opts = "-delay 20 -density 300",
+  outname)
+```
+
+## Solution: Port papaya: JavaScript library
+
+```{r div, results='asis'}
+library(papayar)
+x = papaya_div()
+cat(x)
+```
+
+## Is it an htmlwidget!? 
+
+<p style="font-size: 140pt; vertical-align: middle; text-align: left;">No</p>
 
 
-## Next Attempt: Port (i.e. Steal) another program
+## Is it an htmlwidget!?
 
-
+<p style="font-size: 140pt; vertical-align: middle; text-align: left;">Not yet.</p>
 
 
 ## Lessons Learned
 
 - Borrow (heavily) other people's stuff
-- Porting to R can help the communithy
+- Porting to R can help the community
     - not always so straightforward
     - Functionality at the whim of the maintainer
     - not std R

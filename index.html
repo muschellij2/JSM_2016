@@ -104,36 +104,48 @@
 
 <slide class=''><hgroup><h2>Problem: Images are 3D: Brain</h2></hgroup><article  id="problem-images-are-3d-brain">
 
-<p><img src="index_files/figure-html/plot-1.png" width="720" /></p>
+<p><img src="index_files/figure-html/wm_seg-1.png" width="720" /></p>
 
 </article></slide><slide class=''><hgroup><h2>We want to explore results</h2></hgroup><article  id="we-want-to-explore-results">
 
 <p><img src="index_files/figure-html/thresh-1.png" width="720" /></p>
 
-</article></slide><slide class=''><hgroup><h2>Solution: Interactive exploring</h2></hgroup><article  id="solution-interactive-exploring">
-
-<div class="papaya" data-params="params">
-</div>
-
 </article></slide><slide class=''><hgroup><h2>Let&#39;s make it interactive!</h2></hgroup><article  id="lets-make-it-interactive">
 
 <ol>
-<li>What is the value added?</li>
-<li>Is it necessary?</li>
-<li>How could I first incorporate it in a static way (e.g. journals)
-
-<ul>
-<li>When that fails go interactive</li>
-</ul></li>
+<li>Are static graphics (e.g. PDFs) &quot;good enough&quot;?</li>
 </ol>
 
-<p>Many times it&#39;s to display results.</p>
+<p><img src="images/philosoraptor.jpeg" style="width: 50%; display: block; margin: auto;"></p>
+
+<p style="font-size: 10pt">
+
+image from <a href='http://cheezburger.com' title=''>http://cheezburger.com</a>
+
+</p>
+
+</article></slide><slide class=''><hgroup><h2>Let&#39;s make it interactive!</h2></hgroup><article  id="lets-make-it-interactive-1" class="build">
+
+<ol>
+<li>Are static graphics (e.g. PDFs) &quot;good enough&quot;?</li>
+</ol>
+
+<ol class = 'build'>
+<li>What step in the analysis does it come in? For me:</li>
+</ol>
+
+<ul>
+<li>exploratory - looking at where image outcomes occur</li>
+<li>confirmatory - see how model predicts image outcome</li>
+</ul>
+
+<ol>
+<li></li>
+</ol>
 
 </article></slide><slide class=''><hgroup><h2>But other programs can do this!</h2></hgroup><article  id="but-other-programs-can-do-this">
 
-<ul>
-<li>Show Pictures of Mango, FSLView, ITK-snap, etc.</li>
-</ul>
+<p><img src="images/stacked.gif" style="width: 100%; display: block; margin: auto;"></p>
 
 </article></slide><slide class=''><hgroup><h2>Principle of interactivity</h2></hgroup><article  id="principle-of-interactivity">
 
@@ -151,18 +163,50 @@
 <p>The <code>manipulate</code> package <span class="cite">(Allaire 2014)</span> from RStudio can add interactivity, BUT:</p>
 
 <ul>
-<li>Images rendering was slow (due to my plotting function)</li>
+<li>Images rendering was slow (due to the R plotting function)</li>
 <li>Only works with RStudio</li>
-<li>Can&#39;t be embedded</li>
+<li>Can&#39;t be embedded in document</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Next Attempt: Port (i.e. Steal) another program</h2></hgroup><article  id="next-attempt-port-i.e.-steal-another-program">
+</article></slide><slide class=''><hgroup><h2>Secon Attempt: Set of PDFs or one GIFs!</h2></hgroup><article  id="secon-attempt-set-of-pdfs-or-one-gifs">
+
+<p>The <code>animation</code> package <span class="cite">(Xie 2013, <span class="cite">Xie et al. (2015)</span>)</span> can easily make GIFs with the images:</p>
+
+<p>Pros:<br/>- Just plotting with regular functions - Can be embedded into an html easily</p>
+
+<p>Cons: - Not really &quot;interactive&quot; - less choice on user&#39;s end - not easy to move back/forward or different view</p>
+
+<pre >## quartz_off_screen 
+##                 2</pre>
+
+<pre >## [1] &quot;images/slice_movie.gif&quot;</pre>
+
+</article></slide><slide class=''><hgroup><h2>Solution: Port papaya: JavaScript library</h2></hgroup><article  id="solution-port-papaya-javascript-library">
+
+<div class="papaya" data-params="params">
+</div>
+
+</article></slide><slide class=''><hgroup><h2>Is it an htmlwidget!?</h2></hgroup><article  id="is-it-an-htmlwidget">
+
+<p style="font-size: 140pt; vertical-align: middle; text-align: left;">
+
+No
+
+</p>
+
+</article></slide><slide class=''><hgroup><h2>Is it an htmlwidget!?</h2></hgroup><article  id="is-it-an-htmlwidget-1">
+
+<p style="font-size: 140pt; vertical-align: middle; text-align: left;">
+
+Not yet.
+
+</p>
 
 </article></slide><slide class=''><hgroup><h2>Lessons Learned</h2></hgroup><article  id="lessons-learned">
 
 <ul>
 <li>Borrow (heavily) other people&#39;s stuff</li>
-<li>Porting to R can help the communithy
+<li>Porting to R can help the community
 
 <ul>
 <li>not always so straightforward</li>
@@ -180,7 +224,13 @@
 
 <div id="refs" class="references">
 <div id="ref-manipulate">
-<p>Allaire, JJ. 2014. <em>Manipulate: Interactive Plots for RStudio</em>. <a href='https://CRAN.R-project.org/package=manipulate' title=''>https://CRAN.R-project.org/package=manipulate</a>.</p></div></div></article></slide>
+<p>Allaire, JJ. 2014. <em>Manipulate: Interactive Plots for RStudio</em>. <a href='https://CRAN.R-project.org/package=manipulate' title=''>https://CRAN.R-project.org/package=manipulate</a>.</p></div>
+
+<div id="ref-animation1">
+<p>Xie, Yihui. 2013. “animation: An R Package for Creating Animations and Demonstrating Statistical Methods.” <em>Journal of Statistical Software</em> 53 (1): 1–27. <a href='http://www.jstatsoft.org/v53/i01/' title=''>http://www.jstatsoft.org/v53/i01/</a>.</p></div>
+
+<div id="ref-animation2">
+<p>Xie, Yihui, Christian Mueller, Lijia Yu, and Weicheng Zhu. 2015. <em>Animation: A Gallery of Animations in Statistics and Utilities to Create Animations</em>. <a href='http://yihui.name/animation' title=''>http://yihui.name/animation</a>.</p></div></div></article></slide>
 
 
   <slide class="backdrop"></slide>
