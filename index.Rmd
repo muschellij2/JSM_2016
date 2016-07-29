@@ -71,7 +71,7 @@ ortho2(i2, t2, add.orient = FALSE, col.y = "green")
 
 - Are static graphics (e.g. PDFs/GIFs) "good enough"?
 
-<img src="images/philosoraptor.jpeg" style="width: 50%; display: block; margin: auto;">
+<img src="images/philosoraptor.jpeg" style="width: 40%; display: block; margin: auto;">
 
 <p style="font-size: 10pt">image from [http://cheezburger.com](http://cheezburger.com)</p>
 
@@ -87,7 +87,7 @@ ortho2(i2, t2, add.orient = FALSE, col.y = "green")
 
 ## But other programs can do this!
 
-<img src="images/stacked.gif" style="width: 80%; display: block; margin: auto;">
+<img src="images/stacked.gif" style="width: 60%; display: block; margin: auto;">
 
 ## My Principle of interactivity
 
