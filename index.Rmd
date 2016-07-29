@@ -67,7 +67,7 @@ ortho2(i2, t2, add.orient = FALSE)
 
 ## Let's make it interactive!
 
-1. Are static graphics (e.g. PDFs) "good enough"?
+- Are static graphics (e.g. PDFs) "good enough"?
 
 <img src="images/philosoraptor.jpeg" style="width: 50%; display: block; margin: auto;">
 
@@ -75,12 +75,12 @@ ortho2(i2, t2, add.orient = FALSE)
 
 ## Let's make it interactive! {.build}
 
-1. Are static graphics (e.g. PDFs) "good enough"?
+- Are static graphics (e.g. PDFs) "good enough"?
 
-> 2. What step in the analysis does it come in? For me:
+> - What step in the analysis does it come in? For me:
       - exploratory - looking at where image outcomes occur
       - confirmatory - see how model predicts image outcome
-> 3. 
+> - 
 
 
 ## But other programs can do this!
@@ -149,7 +149,8 @@ outname = "images/slice_movie.gif"
     dev.off()
     png_converter(
       paste0(tstub, "*.png"),
-      extra.opts = "-delay 80 -density 300",
+      extra.opts = "-density 300",
+      interval = 8,
       outname)
 # }
 ```
