@@ -85,13 +85,18 @@ ortho2(i2, t2, add.orient = FALSE)
 
 ## But other programs can do this!
 
-<img src="images/stacked.gif" style="width: 100%; display: block; margin: auto;">
+<img src="images/stacked.gif" style="width: 80%; display: block; margin: auto;">
 
-## Principle of interactivity
+## My Principle of interactivity
 
 - Should be scriptable to get the interactive graphic
+    - still hard to script/reproduce the **interaction**
+    
 - Should be within the analysis workflow
     - Others are just standalone viewers
+    - Relies on fewer systems/dependencies
+
+- I tried R
 
 ## First Attempt: Use manipulate
 
