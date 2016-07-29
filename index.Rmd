@@ -54,6 +54,7 @@ if (!file.exists(seg_fname)) {
   seg = readnii(seg_fname)
 }
 seg_img = seg == 2
+writenii(seg_img, "overlay.nii.gz")
 i2 = fslswapdim(img, a = "-x")
 t2 = fslswapdim(seg_img, a = "-x")
 ortho2(i2, add.orient = FALSE)
@@ -62,7 +63,7 @@ ortho2(i2, add.orient = FALSE)
 ## We want to explore results
 
 ```{r thresh}
-ortho2(i2, t2, add.orient = FALSE)
+ortho2(i2, t2, add.orient = FALSE, col.y = "green")
 ```
 
 ## Let's make it interactive!
