@@ -6,6 +6,7 @@ bibliography: JSM_2016.bib
 output:
   ioslides_presentation:
     self_contained: false
+    widescreen: true
     includes:
       in_header: header.html
 ---
@@ -68,20 +69,20 @@ ortho2(i2, t2, add.orient = FALSE, col.y = "green")
 
 ## Let's make it interactive!
 
-- Are static graphics (e.g. PDFs) "good enough"?
+- Are static graphics (e.g. PDFs/GIFs) "good enough"?
 
 <img src="images/philosoraptor.jpeg" style="width: 50%; display: block; margin: auto;">
 
 <p style="font-size: 10pt">image from [http://cheezburger.com](http://cheezburger.com)</p>
 
-## Let's make it interactive! {.build}
+## Let's make it interactive!
 
-- Are static graphics (e.g. PDFs) "good enough"?
+- Are static graphics (e.g. PDFs/GIFs) "good enough"?
 
-> - What step in the analysis does it come in? For me:
-      - exploratory - looking at where image outcomes occur
-      - confirmatory - see how model predicts image outcome
-> - 
+- What step in the analysis does it come in? For me:
+    - exploratory - looking at where image outcomes occur
+    - confirmatory - see how model predicts image outcome
+
 
 
 ## But other programs can do this!
