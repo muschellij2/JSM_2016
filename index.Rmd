@@ -167,7 +167,7 @@ outname = "images/slice_movie.gif"
 ```{r div, results='asis'}
 library(papayar)
 x = papaya_div()
-x = gsub('">', '" style="width: 50%">', x)
+x = gsub('">', '" style="width: 40%">', x)
 cat(x)
 ```
 
