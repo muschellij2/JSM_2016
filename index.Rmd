@@ -1,6 +1,8 @@
 ---
 title: "Papayar"
-author: "John Muschelli"
+author: |
+  | "John Muschelli, presentation: http://johnmuschelli.com/JSM_2016"
+  | "code: https://github.com/muschellij2/JSM_2016"
 date: "July 15, 2016"
 bibliography: JSM_2016.bib
 output:
@@ -164,7 +166,7 @@ outname = "images/slice_movie.gif"
 
 ## Solution: Port papaya: JavaScript library
 
-<div style="width:80%; height:55%;">
+<div style="width:80%; height:55%; display: block; margin: auto;">
 ```{r div, results='asis'}
 library(papayar)
 x = papaya_div()
