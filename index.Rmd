@@ -164,7 +164,7 @@ outname = "images/slice_movie.gif"
 
 ## Solution: Port papaya: JavaScript library
 
-<div style="width:80%; height:80%;">
+<div style="width:85%; height:70%;">
 ```{r div, results='asis'}
 library(papayar)
 x = papaya_div()
