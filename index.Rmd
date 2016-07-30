@@ -1,8 +1,8 @@
 ---
 title: "Papayar"
 author: |
-  | "John Muschelli, presentation: http://johnmuschelli.com/JSM_2016"
-  | "code: https://github.com/muschellij2/JSM_2016"
+  | "John Muschelli, presentation johnmuschelli.com/JSM_2016"
+  | "code github.com/muschellij2/JSM_2016"
 date: "July 15, 2016"
 bibliography: JSM_2016.bib
 output:
