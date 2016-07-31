@@ -86,7 +86,7 @@ ortho2(i2, t2, add.orient = FALSE, col.y = "green")
 
 
 
-## But other programs can do this!
+## But other (standalone) programs can do this!
 
 <img src="images/stacked.gif" style="width: 60%; display: block; margin: auto;">
 
