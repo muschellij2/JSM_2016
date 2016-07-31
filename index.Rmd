@@ -109,9 +109,17 @@ The `manipulate` package [@manipulate] from RStudio can add interactivity, BUT:
 - Only works with RStudio
 - Can't be embedded in document
 
-## Secon Attempt: Set of PDFs or one GIFs!
+## Second Attempt: Set of PDFs or one GIFs!
 
 The `animation` package [@animation1, @animation2] can easily make GIFs with the images:
+
+<img src="images/slice_movie.gif" style="width: 40%; display: block; margin: auto;">
+
+
+## Second Attempt: Set of PDFs or one GIFs!
+
+<img src="images/slice_movie.gif" style="width: 10%; display: block; margin: auto;">
+
 
 Pros:    
 
@@ -126,11 +134,12 @@ Cons:
 
 ```{r gif, results='hide'}
 library(msseg)
+library(scales)
 outname = "images/slice_movie.gif"
 # if (!file.exists(outname)) {
     nz = nsli(i2)
     # n_slices = nz
-    n_slices = 10
+    n_slices = 20
     probs = seq(1/(n_slices * 2), 
                 1 - 1/(n_slices * 2), 
                 length.out = n_slices)
@@ -151,14 +160,14 @@ outname = "images/slice_movie.gif"
     for (slice in slices) {
       oro.nifti::overlay(x = i2, y = t3, 
               z = slice,
-              col.y = "green",
+              col.y = alpha("green", 0.5),
               plot.type = "single")
     }
     dev.off()
     png_converter(
       paste0(tstub, "*.png"),
       extra.opts = "-density 300",
-      interval = 8,
+      interval = 0.5,
       outname)
 # }
 ```
