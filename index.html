@@ -75,6 +75,7 @@
 
   </style>
 
+  <link rel="stylesheet" href="JSM_2016.css" type="text/css" />
 
   <link rel="stylesheet" type="text/css" href="papaya.css?version=0.8&build=979" />
     <script type="text/javascript" src="papaya.js?version=0.8&build=979">
@@ -113,7 +114,7 @@
 </article></slide><slide class=''><hgroup><h2>Let&#39;s make it interactive!</h2></hgroup><article  id="lets-make-it-interactive">
 
 <ul>
-<li>Are static graphics (e.g. PDFs/GIFs) good enough?</li>
+<li>Are static graphics (e.g. PDFs) good enough?</li>
 </ul>
 
 <p><img src="images/philosoraptor.jpeg" style="width: 40%; display: block; margin: auto;"></p>
@@ -131,17 +132,47 @@ image from <a href='http://cheezburger.com' title=''>http://cheezburger.com</a>
 <li>What step in the analysis does it come in? For me:
 
 <ul>
-<li>exploratory - looking at where image outcomes occur</li>
-<li>confirmatory - see how model predicts image outcome</li>
+<li>exploratory - looking at areas of the brain in processing</li>
+<li>Asking: &quot;Is this step working?&quot;</li>
 </ul></li>
 </ul>
 
+<p><img src="images/not_right.gif" style="width: 40%; display: block; margin: auto;"></p>
+
+<p style="font-size: 10pt">
+
+<a href='http://www.natashaboyd.com/uploads/1/5/5/3/15536518/5572229_orig.gif' title=''>http://www.natashaboyd.com/uploads/1/5/5/3/15536518/5572229_orig.gif</a>
+
+</p>
+
+</article></slide><slide class=''><hgroup><h2>Let&#39;s make it interactive!</h2></hgroup><article  id="lets-make-it-interactive-2">
+
+<ul>
+<li><p>Are static graphics (e.g. PDFs/GIFs) good enough?</p></li>
+<li>What step in the analysis does it come in? For me:
+
+<ul>
+<li>confirmatory - check model predictions</li>
+</ul></li>
+</ul>
+
+<p><img src="images/looks_good.gif" style="width: 40%; display: block; margin: auto;"></p>
+
+<p style="font-size: 10pt">
+
+<a href='http://media.tumblr.com/tumblr_lnlszpEQo21qd8tfx.gif' title=''>http://media.tumblr.com/tumblr_lnlszpEQo21qd8tfx.gif</a>
+
+</p>
+
 </article></slide><slide class=''><hgroup><h2>But other (standalone) programs can do this!</h2></hgroup><article  id="but-other-standalone-programs-can-do-this">
+
+<p>Also known as &quot;I can do that in X already&quot;</p>
 
 <p><img src="images/stacked.gif" style="width: 60%; display: block; margin: auto;"></p>
 
 </article></slide><slide class=''><hgroup><h2>Some (of my) Principles of interactivity</h2></hgroup><article  id="some-of-my-principles-of-interactivity">
 
+<div style="font-size: 24pt;">
 <ol>
 <li>Should be scriptable to get the interactive <strong>graphic</strong>
 
@@ -155,36 +186,38 @@ image from <a href='http://cheezburger.com' title=''>http://cheezburger.com</a>
 <li>Relies on fewer systems/dependencies</li>
 </ul></li>
 <li>Should be simple for the easy case for the user</li>
-</ol>
+</ol></div>
 
 <p><img src="images/Rlogo.png" style="width: 15%; display: block; margin: auto;"></p>
 
 </article></slide><slide class=''><hgroup><h2>First Attempt: Use manipulate</h2></hgroup><article  id="first-attempt-use-manipulate">
 
-<p>The <code>manipulate</code> package <span class="cite">(Allaire 2014)</span> from RStudio can add interactivity:</p>
+<div style="font-size: 26pt;">
+<p>The <code>manipulate</code> package <span class="cite">(Allaire 2014)</span> from RStudio can add interactivity:</p></div>
 
 <p><img src="images/manipulate.gif" style="width: 90%; display: block; margin: auto;"></p>
 
 </article></slide><slide class=''><hgroup><h2>First Attempt: Use manipulate</h2></hgroup><article  id="first-attempt-use-manipulate-1">
 
+<div style="font-size: 26pt;">
 <p>The <code>manipulate</code> package <span class="cite">(Allaire 2014)</span> from RStudio can add interactivity, BUT:</p>
 
 <ul>
 <li>Images rendering was slow (due to the R plotting function)</li>
 <li>Only works with RStudio</li>
 <li>Can&#39;t be embedded in document</li>
-</ul>
+</ul></div>
 
-</article></slide><slide class=''><hgroup><h2>Second Attempt: Set of PDFs or one GIFs!</h2></hgroup><article  id="second-attempt-set-of-pdfs-or-one-gifs">
+</article></slide><slide class=''><hgroup><h2>Second Attempt: Set of PDFs or GIFs!</h2></hgroup><article  id="second-attempt-set-of-pdfs-or-gifs">
 
-<p>The <code>animation</code> package <span class="cite">(Xie 2013, <span class="cite">Xie et al. (2015)</span>)</span> can easily make GIFs with the images:</p>
+<div style="font-size: 20pt;">
+<p>The <code>animation</code> package <span class="cite">(Xie 2013, <span class="cite">Xie et al. (2015)</span>)</span> can make GIFs:</p>
 
-<p><img src="images/slice_movie.gif" style="width: 40%; display: block; margin: auto;"></p>
+<p><img src="images/slice_movie.gif" style="width: 15%; display: block; margin: auto;"></p></div>
 
-</article></slide><slide class=''><hgroup><h2>Second Attempt: Set of PDFs or one GIFs!</h2></hgroup><article  id="second-attempt-set-of-pdfs-or-one-gifs-1">
+<div id="wrap">
 
-<p><img src="images/slice_movie.gif" style="width: 10%; display: block; margin: auto;"></p>
-
+<div id="left_col" style="font-size: 20pt;">
 <p>Pros:</p>
 
 <ul>
@@ -193,8 +226,9 @@ image from <a href='http://cheezburger.com' title=''>http://cheezburger.com</a>
 <ul>
 <li>Can be embedded into an html easily</li>
 </ul></li>
-</ul>
+</ul></div>
 
+<div id="right_col">
 <p>Cons:</p>
 
 <ul>
@@ -204,7 +238,7 @@ image from <a href='http://cheezburger.com' title=''>http://cheezburger.com</a>
 <li>less choice on user&#39;s end</li>
 <li>not easy to move back/forward or different view</li>
 </ul></li>
-</ul>
+</ul></div>
 
 </article></slide><slide class=''><hgroup><h2>Solution: Port papaya: JavaScript library</h2></hgroup><article  id="solution-port-papaya-javascript-library">
 
@@ -230,21 +264,22 @@ Not yet.
 
 </article></slide><slide class=''><hgroup><h2>Lessons Learned</h2></hgroup><article  id="lessons-learned">
 
+<div style="font-size: 26pt;">
 <ul>
 <li>Borrow (heavily) other people&#39;s stuff</li>
 <li>Porting to R can help the community
 
 <ul>
+<li>need some non-R knowledge, usually JavaScript</li>
 <li>not always so straightforward</li>
-<li>Functionality at the whim of the maintainer</li>
-<li>not std R</li>
+<li>Functionality at the whim of the JS maintainer</li>
 </ul></li>
 <li>htmlwidgets is great
 
 <ul>
-<li>not always super easy for a user to cram into</li>
+<li>some JS libraries have odd rules</li>
 </ul></li>
-</ul>
+</ul></div>
 
 </article></slide><slide class=''><hgroup><h2>Bibliography</h2></hgroup><article  id="bibliography" class="unnumbered">
 

@@ -7,6 +7,7 @@ bibliography: JSM_2016.bib
 output:
   ioslides_presentation:
     self_contained: false
+    css: JSM_2016.css
     widescreen: true
     includes:
       in_header: header.html
@@ -70,7 +71,7 @@ ortho2(i2, t2, add.orient = FALSE, col.y = "green")
 
 ## Let's make it interactive!
 
-- Are static graphics (e.g. PDFs/GIFs) good enough?
+- Are static graphics (e.g. PDFs) good enough?
 
 <img src="images/philosoraptor.jpeg" style="width: 40%; display: block; margin: auto;">
 
@@ -81,16 +82,34 @@ ortho2(i2, t2, add.orient = FALSE, col.y = "green")
 - Are static graphics (e.g. PDFs/GIFs) good enough?
 
 - What step in the analysis does it come in? For me:
-    - exploratory - looking at where image outcomes occur
-    - confirmatory - see how model predicts image outcome
+    - exploratory - looking at areas of the brain in processing
+      - Asking: "Is this step working?"
+      
+<img src="images/not_right.gif" style="width: 40%; display: block; margin: auto;">
 
+<p style="font-size: 10pt">http://www.natashaboyd.com/uploads/1/5/5/3/15536518/5572229_orig.gif</p>
+
+## Let's make it interactive!
+
+- Are static graphics (e.g. PDFs/GIFs) good enough?
+
+- What step in the analysis does it come in? For me:
+    - confirmatory - check model predictions
+      
+<img src="images/looks_good.gif" style="width: 40%; display: block; margin: auto;">
+
+<p style="font-size: 10pt">http://media.tumblr.com/tumblr_lnlszpEQo21qd8tfx.gif</p>
 
 
 ## But other (standalone) programs can do this!
 
+Also known as "I can do that in X already" 
+
 <img src="images/stacked.gif" style="width: 60%; display: block; margin: auto;">
 
 ## Some (of my) Principles of interactivity
+
+<div style='font-size: 24pt;'>
 
 1. Should be scriptable to get the interactive **graphic**
     - still hard to script/reproduce the **interaction**
@@ -101,12 +120,19 @@ ortho2(i2, t2, add.orient = FALSE, col.y = "green")
 
 3. Should be simple for the easy case for the user
 
+</div>
+
 <img src="images/Rlogo.png" style="width: 15%; display: block; margin: auto;">
+
 
 
 ## First Attempt: Use manipulate
 
+<div style='font-size: 26pt;'>
+
 The `manipulate` package [@manipulate] from RStudio can add interactivity:
+
+</div>
 
 <img src="images/manipulate.gif" style="width: 90%; display: block; margin: auto;">
 
@@ -114,34 +140,48 @@ The `manipulate` package [@manipulate] from RStudio can add interactivity:
 
 ## First Attempt: Use manipulate
 
+<div style='font-size: 26pt;'>
+
 The `manipulate` package [@manipulate] from RStudio can add interactivity, BUT:
 
 - Images rendering was slow (due to the R plotting function)
 - Only works with RStudio
 - Can't be embedded in document
 
-## Second Attempt: Set of PDFs or one GIFs!
-
-The `animation` package [@animation1, @animation2] can easily make GIFs with the images:
-
-<img src="images/slice_movie.gif" style="width: 40%; display: block; margin: auto;">
+</div>
 
 
-## Second Attempt: Set of PDFs or one GIFs!
+## Second Attempt: Set of PDFs or GIFs!
 
-<img src="images/slice_movie.gif" style="width: 10%; display: block; margin: auto;">
+<div style='font-size: 20pt;'>
 
+The `animation` package [@animation1, @animation2] can make GIFs:
+
+<img src="images/slice_movie.gif" style="width: 15%; display: block; margin: auto;">
+
+</div>
+
+<div id="wrap">
+<div id="left_col" style='font-size: 20pt;'>
 
 Pros:    
 
 - Just plotting with regular functions
     - Can be embedded into an html easily
+</div>
+
+<div id="right_col">
 
 Cons: 
 
 - Not really "interactive"
     - less choice on user's end
     - not easy to move back/forward or different view
+
+</div> 
+
+
+
 
 ```{r gif, results='hide'}
 library(msseg)
@@ -205,14 +245,16 @@ cat(x)
 
 ## Lessons Learned
 
+<div style='font-size: 26pt;'>
+
 - Borrow (heavily) other people's stuff
 - Porting to R can help the community
+    - need some non-R knowledge, usually JavaScript
     - not always so straightforward
-    - Functionality at the whim of the maintainer
-    - not std R
-- htmlwidgets is great
-    - not always super easy for a user to cram into
+    - Functionality at the whim of the JS maintainer
+- htmlwidgets framework is great
+    - some JS libraries have odd rules
     
-
+</div>
 
 ## Bibliography
