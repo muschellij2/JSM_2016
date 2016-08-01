@@ -51,6 +51,7 @@ if (!all(file.exists(c(img_fname,
 
 - Image dimensions are: $197\times233\times189$
     - plotting functions are based on `graphics::image` (non-rastered)
+- 
 
 ```{r wm_seg}
 seg_fname = "t1_seg.nii.gz"
@@ -140,6 +141,7 @@ The `manipulate` package [@manipulate] from RStudio can add interactivity:
 </div>
 
 ```{r, eval = FALSE}
+library(manipulate)
 iplot = function(img, plane = c("axial", 
                                 "coronal", "sagittal"), 
                  useRaster = TRUE, ...){
