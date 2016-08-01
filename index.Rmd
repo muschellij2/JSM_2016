@@ -136,7 +136,7 @@ The `manipulate` package [@manipulate] from RStudio can add interactivity:
 
 <img src="images/manipulate.gif" style="width: 90%; display: block; margin: auto;">
 
-## First Attempt: Use manipulate
+## First Attempt: Use manipulate package
 
 <div style='font-size: 26pt;'>
 
