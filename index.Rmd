@@ -126,7 +126,7 @@ Also known as "I can do that in X already"
 
 
 
-## First Attempt: Use manipulate
+## First Attempt: Use manipulate package
 
 <div style='font-size: 26pt;'>
 
@@ -135,8 +135,6 @@ The `manipulate` package [@manipulate] from RStudio can add interactivity:
 </div>
 
 <img src="images/manipulate.gif" style="width: 90%; display: block; margin: auto;">
-
-
 
 ## First Attempt: Use manipulate
 
@@ -149,7 +147,6 @@ The `manipulate` package [@manipulate] from RStudio can add interactivity, BUT:
 - Can't be embedded in document
 
 </div>
-
 
 ## Second Attempt: Set of PDFs or GIFs!
 
@@ -223,9 +220,13 @@ outname = "images/slice_movie.gif"
 # }
 ```
 
-## Solution: Port papaya: JavaScript library
+## papayar R package, port of Papaya JS library
 
-<div style="width:80%; height:55%; display: block; margin: auto;">
+```{r eval = FALSE, echo = TRUE}
+library(papayar); papaya(image)
+```
+
+<div style="width:70%; height:55%; display: block; margin: auto;">
 ```{r div, results='asis'}
 library(papayar)
 x = papaya_div()
