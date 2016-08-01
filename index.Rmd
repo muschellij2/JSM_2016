@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo = FALSE,
                       message = FALSE)
 ```
 
-## Problem: Images are 3D: Brain
+## Problem: images are 3D: brain
 
 ```{r plot}
 library(fslr)
@@ -47,6 +47,11 @@ if (!all(file.exists(c(img_fname,
 }
 ```
 
+## How big is a brain?
+
+- Image dimensions are: $197\times233\times189$
+    - plotting functions are based on `graphics::image` (non-rastered)
+
 ```{r wm_seg}
 seg_fname = "t1_seg.nii.gz"
 if (!file.exists(seg_fname)) {
@@ -63,7 +68,7 @@ t2 = fslswapdim(seg_img, a = "-x")
 ortho2(i2, add.orient = FALSE)
 ```
 
-## Explore results: e.g. Gray Matter Segmentation
+## Explore results: e.g. gray matter segmentation
 
 ```{r thresh}
 ortho2(i2, t2, add.orient = FALSE, col.y = "green")
@@ -105,9 +110,9 @@ ortho2(i2, t2, add.orient = FALSE, col.y = "green")
 
 Also known as "I can do that in X already" 
 
-<img src="images/stacked.gif" style="width: 60%; display: block; margin: auto;">
+<img src="images/stacked.png" style="width: 60%; display: block; margin: auto;">
 
-## Some (of my) Principles of interactivity
+## Some (of my) principles of interactivity
 
 <div style='font-size: 24pt;'>
 
@@ -126,7 +131,7 @@ Also known as "I can do that in X already"
 
 
 
-## First Attempt: Use manipulate package
+## First attempt: Use manipulate package
 
 <div style='font-size: 26pt;'>
 
@@ -134,9 +139,38 @@ The `manipulate` package [@manipulate] from RStudio can add interactivity:
 
 </div>
 
+```{r, eval = FALSE}
+iplot = function(img, plane = c("axial", 
+                                "coronal", "sagittal"), 
+                 useRaster = TRUE, ...){
+  ## pick the plane
+  plane = match.arg(plane, c("axial", 
+                             "coronal", "sagittal"))
+  # Get the max number of slices in that plane for the slider
+  ns=  switch(plane,
+              "axial"=dim(img)[3],
+              "coronal"=dim(img)[2],
+              "sagittal"=dim(img)[1])
+  ## run the manipulate command
+  manipulate({
+    image(img, z = z, plot.type= "single",
+          plane = plane, 
+          useRaster =useRaster, ...)
+    # this will return mouse clicks (future experimental work)
+    pos <- manipulatorMouseClick()
+    if (!is.null(pos)) {
+      print(pos)
+    }
+  },
+  ## make the slider
+  z = slider(1, ns, step=1, initial = ceiling(ns/2))
+  )
+}
+```
+
 <img src="images/manipulate.gif" style="width: 90%; display: block; margin: auto;">
 
-## First Attempt: Use manipulate package
+## First attempt: Use manipulate package
 
 <div style='font-size: 26pt;'>
 
@@ -148,7 +182,7 @@ The `manipulate` package [@manipulate] from RStudio can add interactivity, BUT:
 
 </div>
 
-## Second Attempt: Set of PDFs or GIFs!
+## Second attempt: set of PDFs or GIFs!
 
 <div style='font-size: 20pt;'>
 
@@ -244,7 +278,7 @@ cat(x)
 <p style="font-size: 140pt; vertical-align: middle; text-align: left;">Not yet.</p>
 
 
-## Lessons Learned
+## Lessons learned
 
 <div style='font-size: 26pt;'>
 
