@@ -90,16 +90,19 @@ ortho2(i2, t2, add.orient = FALSE, col.y = "green")
 
 <img src="images/stacked.gif" style="width: 60%; display: block; margin: auto;">
 
-## My Principle of interactivity
+## Some (of my) Principles of interactivity
 
-- Should be scriptable to get the interactive graphic
+1. Should be scriptable to get the interactive **graphic**
     - still hard to script/reproduce the **interaction**
     
-- Should be within the analysis workflow
+2. Should be within the analysis workflow
     - Others are just standalone viewers
     - Relies on fewer systems/dependencies
 
-- I tried R
+3. Should be simple for the easy case for the user
+
+<img src="images/Rlogo.png" style="width: 15%; display: block; margin: auto;">
+
 
 ## First Attempt: Use manipulate
 
