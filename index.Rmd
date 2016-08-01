@@ -106,6 +106,14 @@ ortho2(i2, t2, add.orient = FALSE, col.y = "green")
 
 ## First Attempt: Use manipulate
 
+The `manipulate` package [@manipulate] from RStudio can add interactivity:
+
+<img src="images/manipulate.gif" style="width: 90%; display: block; margin: auto;">
+
+
+
+## First Attempt: Use manipulate
+
 The `manipulate` package [@manipulate] from RStudio can add interactivity, BUT:
 
 - Images rendering was slow (due to the R plotting function)
