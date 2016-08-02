@@ -1,6 +1,6 @@
 ---
 title: "Papayar: An interactive neuroimage plotter with R"
-subtitle: "John Muschelli, \\@StrictlyStat"
+subtitle: "John Muschelli, \\@StrictlyStat\n Johns Hopkins University"
 author: "presentation: http://johnmuschelli.com/JSM_2016"
 date: "code: http://github.com/muschellij2/JSM_2016"
 bibliography: JSM_2016.bib
@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo = FALSE,
                       message = FALSE)
 ```
 
-## Problem: images are 3D: brain
+## Problem: Explore 3D images of brain (MRI)
 
 ```{r plot}
 library(fslr)
@@ -47,11 +47,7 @@ if (!all(file.exists(c(img_fname,
 }
 ```
 
-## How big is a brain?
 
-- Image dimensions are: $197\times233\times189$
-    - plotting functions are based on `graphics::image` (non-rastered)
-- 
 
 ```{r wm_seg}
 seg_fname = "t1_seg.nii.gz"
@@ -69,7 +65,18 @@ t2 = fslswapdim(seg_img, a = "-x")
 ortho2(i2, add.orient = FALSE)
 ```
 
-## Explore results: e.g. gray matter segmentation
+
+## How big is a brain image?
+
+- Images come from NIfTI files
+    - comprised of 3D pixels called voxels
+- Image dimensions are: $197\times233\times189$ (> 8 million voxels)
+
+<img src="images/movie_final.gif" style="width: 40%; display: block; margin: auto;">
+    
+    
+
+## Explore results: e.g. gray matter classification
 
 ```{r thresh}
 ortho2(i2, t2, add.orient = FALSE, col.y = "green")
@@ -88,7 +95,7 @@ ortho2(i2, t2, add.orient = FALSE, col.y = "green")
 - Are static graphics (e.g. PDFs/GIFs) good enough?
 
 - What step in the analysis does it come in? For me:
-    - exploratory - looking at areas of the brain in processing
+    - exploratory - looking at results of image processing
       - Asking: "Is this step working?"
       
 <img src="images/not_right.gif" style="width: 40%; display: block; margin: auto;">
@@ -101,6 +108,7 @@ ortho2(i2, t2, add.orient = FALSE, col.y = "green")
 
 - What step in the analysis does it come in? For me:
     - confirmatory - check model predictions
+    - "That looks like gray matter to me"
       
 <img src="images/looks_good.gif" style="width: 40%; display: block; margin: auto;">
 
@@ -111,20 +119,20 @@ ortho2(i2, t2, add.orient = FALSE, col.y = "green")
 
 Also known as "I can do that in X already" 
 
-<img src="images/stacked.png" style="width: 60%; display: block; margin: auto;">
+<img src="images/stacked.png" style="width: 70%; display: block; margin: auto;">
 
 ## Some (of my) principles of interactivity
 
-<div style='font-size: 24pt;'>
+<div style='font-size: 22pt;'>
 
 1. Should be scriptable to get the interactive **graphic**
     - still hard to script/reproduce the **interaction**
     
-2. Should be within the analysis workflow
+2. Within the analysis workflow
     - Others are just standalone viewers
     - Relies on fewer systems/dependencies
 
-3. Should be simple for the easy case for the user
+3. Easy to navigate for the user
 
 </div>
 
@@ -178,9 +186,10 @@ iplot = function(img, plane = c("axial",
 
 The `manipulate` package [@manipulate] from RStudio can add interactivity, BUT:
 
-- Images rendering was slow (due to the R plotting function)
-- Only works with RStudio
-- Can't be embedded in document
+- Images rendering was `slow`
+    - due to the R plotting and viewer interaction
+- Only works with <img src="images/blue-250.png" style="width: 15%; display: inline; margin: auto;">
+- Can't embed output in a document
 
 </div>
 
@@ -199,8 +208,8 @@ The `animation` package [@animation1, @animation2] can make GIFs:
 
 Pros:    
 
-- Just plotting with regular functions
-    - Can be embedded into an html easily
+- Plotting with standard functions
+    - Can be **embedded** into an html easily
 </div>
 
 <div id="right_col">
@@ -209,7 +218,7 @@ Cons:
 
 - Not really "interactive"
     - less choice on user's end
-    - not easy to move back/forward or different view
+    - no other views
 
 </div> 
 
@@ -223,7 +232,7 @@ outname = "images/slice_movie.gif"
 # if (!file.exists(outname)) {
     nz = nsli(i2)
     # n_slices = nz
-    n_slices = 20
+    n_slices = 30
     probs = seq(1/(n_slices * 2), 
                 1 - 1/(n_slices * 2), 
                 length.out = n_slices)
@@ -251,12 +260,23 @@ outname = "images/slice_movie.gif"
     png_converter(
       paste0(tstub, "*.png"),
       extra.opts = "-density 300",
-      interval = 0.5,
+      interval = 0.25,
       outname)
 # }
 ```
 
-## papayar R package, port of Papaya JS library
+## Papaya JavaScript library
+
+https://github.com/rii-mango/Papaya
+
+"A pure JavaScript medical research image viewer."
+
+- From makers of Mango (Multi-image Analysis GUI, UT Health Science)
+
+
+
+
+## papayar R package, port of Papaya 
 
 ```{r eval = FALSE, echo = TRUE}
 library(papayar); papaya(image)
@@ -285,12 +305,13 @@ cat(x)
 <div style='font-size: 26pt;'>
 
 - Borrow (heavily) other people's stuff
+- htmlwidgets framework is great
+    - some JS libraries have odd rules
 - Porting to R can help the community
     - need some non-R knowledge, usually JavaScript
     - not always so straightforward
     - Functionality at the whim of the JS maintainer
-- htmlwidgets framework is great
-    - some JS libraries have odd rules
+
     
 </div>
 

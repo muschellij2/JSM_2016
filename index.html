@@ -26,7 +26,7 @@
       // Slide settings
       settings: {
                 title: 'Papayar: An interactive neuroimage plotter with R',
-                        subtitle: 'John Muschelli, @StrictlyStat',
+                        subtitle: 'John Muschelli, @StrictlyStat Johns Hopkins University',
                 useBuilds: true,
         usePrettify: true,
         enableSlideAreas: true,
@@ -103,21 +103,24 @@
           </hgroup>
   </slide>
 
-<slide class=''><hgroup><h2>Problem: images are 3D: brain</h2></hgroup><article  id="problem-images-are-3d-brain">
-
-</article></slide><slide class=''><hgroup><h2>How big is a brain?</h2></hgroup><article  id="how-big-is-a-brain">
-
-<ul>
-<li>Image dimensions are: \(197\times233\times189\)
-
-<ul>
-<li>plotting functions are based on <code>graphics::image</code> (non-rastered)</li>
-</ul></li>
-</ul>
+<slide class=''><hgroup><h2>Problem: Explore 3D images of brain (MRI)</h2></hgroup><article  id="problem-explore-3d-images-of-brain-mri">
 
 <p><img src="index_files/figure-html/wm_seg-1.png" width="720" /></p>
 
-</article></slide><slide class=''><hgroup><h2>Explore results: e.g. gray matter segmentation</h2></hgroup><article  id="explore-results-e.g.-gray-matter-segmentation">
+</article></slide><slide class=''><hgroup><h2>How big is a brain image?</h2></hgroup><article  id="how-big-is-a-brain-image">
+
+<ul>
+<li>Images come from NIfTI files
+
+<ul>
+<li>comprised of 3D pixels called voxels</li>
+</ul></li>
+<li>Image dimensions are: \(197\times233\times189\) (&gt; 8 million voxels)</li>
+</ul>
+
+<p><img src="images/movie_final.gif" style="width: 40%; display: block; margin: auto;"></p>
+
+</article></slide><slide class=''><hgroup><h2>Explore results: e.g. gray matter classification</h2></hgroup><article  id="explore-results-e.g.-gray-matter-classification">
 
 <p><img src="index_files/figure-html/thresh-1.png" width="720" /></p>
 
@@ -142,7 +145,7 @@ image from <a href='http://cheezburger.com' title=''>http://cheezburger.com</a>
 <li>What step in the analysis does it come in? For me:
 
 <ul>
-<li>exploratory - looking at areas of the brain in processing</li>
+<li>exploratory - looking at results of image processing</li>
 <li>Asking: &quot;Is this step working?&quot;</li>
 </ul></li>
 </ul>
@@ -163,6 +166,7 @@ image from <a href='http://cheezburger.com' title=''>http://cheezburger.com</a>
 
 <ul>
 <li>confirmatory - check model predictions</li>
+<li>&quot;That looks like gray matter to me&quot;</li>
 </ul></li>
 </ul>
 
@@ -178,24 +182,24 @@ image from <a href='http://cheezburger.com' title=''>http://cheezburger.com</a>
 
 <p>Also known as &quot;I can do that in X already&quot;</p>
 
-<p><img src="images/stacked.png" style="width: 60%; display: block; margin: auto;"></p>
+<p><img src="images/stacked.png" style="width: 70%; display: block; margin: auto;"></p>
 
 </article></slide><slide class=''><hgroup><h2>Some (of my) principles of interactivity</h2></hgroup><article  id="some-of-my-principles-of-interactivity">
 
-<div style="font-size: 24pt;">
+<div style="font-size: 22pt;">
 <ol>
 <li>Should be scriptable to get the interactive <strong>graphic</strong>
 
 <ul>
 <li>still hard to script/reproduce the <strong>interaction</strong></li>
 </ul></li>
-<li>Should be within the analysis workflow
+<li>Within the analysis workflow
 
 <ul>
 <li>Others are just standalone viewers</li>
 <li>Relies on fewer systems/dependencies</li>
 </ul></li>
-<li>Should be simple for the easy case for the user</li>
+<li>Easy to navigate for the user</li>
 </ol></div>
 
 <p><img src="images/Rlogo.png" style="width: 15%; display: block; margin: auto;"></p>
@@ -213,9 +217,13 @@ image from <a href='http://cheezburger.com' title=''>http://cheezburger.com</a>
 <p>The <code>manipulate</code> package <span class="cite">(Allaire 2014)</span> from RStudio can add interactivity, BUT:</p>
 
 <ul>
-<li>Images rendering was slow (due to the R plotting function)</li>
-<li>Only works with RStudio</li>
-<li>Can&#39;t be embedded in document</li>
+<li>Images rendering was <code>slow</code>
+
+<ul>
+<li>due to the R plotting and viewer interaction</li>
+</ul></li>
+<li>Only works with <img src="images/blue-250.png" style="width: 15%; display: inline; margin: auto;"></li>
+<li>Can&#39;t embed output in a document</li>
 </ul></div>
 
 </article></slide><slide class=''><hgroup><h2>Second attempt: set of PDFs or GIFs!</h2></hgroup><article  id="second-attempt-set-of-pdfs-or-gifs">
@@ -231,10 +239,10 @@ image from <a href='http://cheezburger.com' title=''>http://cheezburger.com</a>
 <p>Pros:</p>
 
 <ul>
-<li>Just plotting with regular functions
+<li>Plotting with standard functions
 
 <ul>
-<li>Can be embedded into an html easily</li>
+<li>Can be <strong>embedded</strong> into an html easily</li>
 </ul></li>
 </ul></div>
 
@@ -246,11 +254,21 @@ image from <a href='http://cheezburger.com' title=''>http://cheezburger.com</a>
 
 <ul>
 <li>less choice on user&#39;s end</li>
-<li>not easy to move back/forward or different view</li>
+<li>no other views</li>
 </ul></li>
 </ul></div>
 
-</article></slide><slide class=''><hgroup><h2>papayar R package, port of Papaya JS library</h2></hgroup><article  id="papayar-r-package-port-of-papaya-js-library">
+</article></slide><slide class=''><hgroup><h2>Papaya JavaScript library</h2></hgroup><article  id="papaya-javascript-library">
+
+<p><a href='https://github.com/rii-mango/Papaya' title=''>https://github.com/rii-mango/Papaya</a></p>
+
+<p>&quot;A pure JavaScript medical research image viewer.&quot;</p>
+
+<ul>
+<li>From makers of Mango (UT Health Science)</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>papayar R package, port of Papaya</h2></hgroup><article  id="papayar-r-package-port-of-papaya">
 
 <pre class = 'prettyprint lang-r'>library(papayar); papaya(image)</pre>
 
@@ -279,17 +297,17 @@ Not yet.
 <div style="font-size: 26pt;">
 <ul>
 <li>Borrow (heavily) other people&#39;s stuff</li>
+<li>htmlwidgets framework is great
+
+<ul>
+<li>some JS libraries have odd rules</li>
+</ul></li>
 <li>Porting to R can help the community
 
 <ul>
 <li>need some non-R knowledge, usually JavaScript</li>
 <li>not always so straightforward</li>
 <li>Functionality at the whim of the JS maintainer</li>
-</ul></li>
-<li>htmlwidgets framework is great
-
-<ul>
-<li>some JS libraries have odd rules</li>
 </ul></li>
 </ul></div>
 
