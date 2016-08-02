@@ -1,6 +1,6 @@
 ---
 title: "Papayar: An interactive neuroimage plotter with R"
-subtitle: "John Muschelli, \\@StrictlyStat\n Johns Hopkins University"
+subtitle: "John Muschelli, \\@StrictlyStat,\n Johns Hopkins University"
 author: "presentation: http://johnmuschelli.com/JSM_2016"
 date: "code: http://github.com/muschellij2/JSM_2016"
 bibliography: JSM_2016.bib
