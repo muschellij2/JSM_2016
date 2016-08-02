@@ -273,7 +273,9 @@ https://github.com/rii-mango/Papaya
 
 - From makers of Mango (Multi-image Analysis GUI, UT Health Science)
 
-
+<img src="images/mango.gif" style="width: 30%; display: block; margin: auto;">
+    
+    
 
 
 ## papayar R package, port of Papaya 
